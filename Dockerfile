@@ -15,5 +15,5 @@ EXPOSE 80
 
 # RUN CADDY
 
-CMD [ "executable" ]
+CMD ["caddy", "RUN", "--config", "Caddyfile", "--adapter", "caddyfile"]
 
