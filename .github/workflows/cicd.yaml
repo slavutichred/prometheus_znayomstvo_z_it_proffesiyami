@@ -1,0 +1,25 @@
+# job build image and push to ghcr.io
+name: Build and Push Docker Image
+on:
+  push:
+    branches:
+      - maine
+  pull_request:
+    branches:
+      - maine
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ghcr.io/slavutichred/prometheus_znayomstvo_z_it_proffesiyami:latest
+
+
